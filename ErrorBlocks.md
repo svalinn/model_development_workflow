@@ -81,7 +81,7 @@ _SpaceClaim is useful for cleaning models that have basic issues such as small g
 </p></details>
 
 ### In Cubit/Trelis
-_Cubit and Trelis are basically the same CAD software with Trelis being the commercial version. They are most useful for the meshing of geometries and assigning materials to volumes._
+_Cubit is a simulation software with CAD capabilities and Trelis is the commercially available version. It is used in this workflow to assign materials to volumes and export the model to the DAGMC .h5m format. Cubit has both a GUI and a command line interface. Nearly all commands can be run through either one._
 
 | Steps  | Graphic User Interface  | In Command Line  |
 |---|---|---|
