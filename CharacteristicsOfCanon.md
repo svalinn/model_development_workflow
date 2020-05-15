@@ -1,8 +1,8 @@
 # Characteristics of a Canonical Geometry
 
-__ _Canonical geometries should contain all aspects of the workflow so that
+_Canonical geometries should contain all aspects of the workflow so that
 through the creation of the geometries one encounters all methods and
-considerations necessary to create functional models._ __
+considerations necessary to create functional models._
 
 ### Basic Models
 
