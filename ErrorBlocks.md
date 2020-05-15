@@ -148,9 +148,9 @@ _A method (implicit complement) is implemented automatically during a DAGMC run 
   2. The blocks will be given two different materials and then the graveyard volume will be assigned. These material assignments will depend on the material library you create/use for the project.
      * To assign one block to the first material use `group "mat:1/rho:0.0223" add vol 1`
      * To assign the rest of the blocks (volumes 2,3,4) to the second material use `group "mat:2/rho:0.03" add vol 2 to 4`
-     * To assign the graveyard volume use `group "mat:Graveyard" add vol 6`
+     * To assign the graveyard volume use `group "mat:Graveyard" add vol 7`
   3. To assign a non-void/vacuum material to the implicit complement you can add the graveyard to a second material group. This second material group will be applied to the implicit complement.
-     * `group "mat:3/rho:0.04" add vol 6`
+     * `group "mat:3/rho:0.04" add vol 7`
 
 #### Exporting the model to .h5m format
 _The DAGMC trelis plugin translates the CAD model into a faceted model that can be used for DAGMC particle tracking. Instructions as to how to install this plugin can be found_ [here](https://svalinn.github.io/DAGMC/install/plugin.html).
