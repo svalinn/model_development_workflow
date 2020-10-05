@@ -6,11 +6,11 @@ __These Tutorials use specific models to explain and demonstrate important steps
 
 ## Sections Sorted by Complexity of Model
 
-  * Characteristics of a Canonical Geometry:
-     - [Overview of each example, definition of canonical geometry](CharacteristicsOfCanon.md)
+  * Overview of Tutorials:
+     - [Overview of each tutorial including geometry](CharacteristicsOfCanon.md)
 
 
-  * Example of 4 Simple Cubes:
+  * Example of 4 Simple Cubes: _**work in progress**_
      - [Full tutorial](SimpleBlockX4.md)
      - [The model before edits in Cubit/Trelis](Simple100BlockX4.SAT)
      - [The model after the addition of a graveyard and implicit complement](Simple100BlockX4WGraveyardVoid.sat)
@@ -22,5 +22,5 @@ __These Tutorials use specific models to explain and demonstrate important steps
      - [Blocks in ACIS (.sat) format](ErrorBlocks.SAT)
      - [Blocks in SpaceClaim format](ErrorBlocks.scdoc)
 
-  * Example of Complex Model to Show Possible Complications
+  * Example of Complex Model to Show Possible Complications:_**work in progress**_
      - [Full tutorial](ComplexAssembly.md)

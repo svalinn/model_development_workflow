@@ -31,7 +31,9 @@ _Any CAD engine should work for this process as long as it can export to a forma
      * ACIS format 22 is preferred (default for Solidworks)
      * Use save or export feature and select ACIS (.sat) format
 
-![ErrorBlocksOverviewWide](https://github.com/NybergWISC/model_development_workflow/blob/master/PicturesSnapshots/ErrorBlocks/ErrorBlocksOverviewWide.JPG)
+| ![ErrorBlocksOverviewWide](https://github.com/NybergWISC/model_development_workflow/blob/master/PicturesSnapshots/ErrorBlocks/ErrorBlocksOverviewWide.JPG) |
+|:--:|
+| This geometry consists of 4 cubes that are 100 cm on a side.  One of the cubes has a threaded hole through it of 5 cm radius. |
 
 <details><summary> Notes </summary><p>
 - The preferred format is ACIS (.sat). Note that multiple file types could be used, but there is anecdotal evidence that suggests .sat files work the best for this process. Otherwise formats such as STEP and STL are also able to be imported to Trelis/Cubit.
@@ -43,7 +45,7 @@ _Any CAD engine should work for this process as long as it can export to a forma
 </details>
 
 ### In ANSYS SpaceClaim
-_SpaceClaim is useful for cleaning models that have general issues such as small gaps, overlaps, edge contacts, and unnecessary geometric detail. More general SpaceClaim tutorials/support can be found_ [here](http://www.spaceclaim.com/en/Support/Tutorials/Essentials.aspx).
+_SpaceClaim is useful for cleaning models that have general issues such as small gaps, overlaps, edge contacts, and unnecessary geometric detail. More general SpaceClaim tutorials/support can be found_ [here](http://www.spaceclaim.com/en/Support/Tutorials/Essentials.aspx). _**Note: It is possible to perform these cleaning procedures using Cubit/Trelis, but that is not illustrated in this tutorial.**_
   1. Open ErrorBlocks.sat by going to __File -> Open__ and then sorting by .sat type files.
   2. Identify all general issues which exist within the model:
 
@@ -90,7 +92,7 @@ _Cubit is a meshing pre-processing software with CAD capabilities and Trelis is 
 | __Import the .sat file into Trelis/Cubit__  | - Can be imported using the GUI with __File -> Import__. <br/></br> - Select the file through file explorer and open. <br/></br> - One important qualifier to include is `[attributes_on]`. | - In the command line the simple form of the command is `import acis [filepath]` <br/></br> - This command can be appended with further commands that can be found by typing `help import acis`. <br/></br> - These qualifiers correspond with the options given when importing files through the GUI. <br/></br> - One important qualifier to include is `[attributes_on]`.  |
 | __How to save progress for the file as ACIS__  | - Click on __File -> Export__ and select the file destination and name. <br/></br> - Make sure that it is being exported as ACIS (.sat) and press ok to save.  | - In command line type `export acis [filepath] overwrite`.  |
 | __Make sure units/distances are correct and if not, fix them__  | - A distance within the model of "X units" should have a metric distance of "X centimeters". <br/></br> - To check this click on a surface/line with a known metric value and then navigate to the properties page and check the surface area or curve length. <br/></br> - On the Command Panel click on __Geometry (leftmost option) -> Volume -> Transform -> Scale (from dropdown menu) -> Enter Scale Factor -> Apply__ | - A distance within the model of "X units" should have a metric distance of "X centimeters". <br/></br> - To check this in the command line the general form is `list [entity name and number] geom`. For example to check the geometry of volume 1 enter `list Volume 1 geom`. <br/></br> - In command line enter `vol all scale [Scale Factor]`. For example parts from solidworks would require `vol all scale 0.1` to convert the units to centimeters. |
-| __Inspect models and resolve overlapping volumes__ | - On the Command Panel click on __Geometry (leftmost option) -> Volume -> Modify -> Heal (from dropdown menu) -> check Autoheal -> Apply__ <br/></br> - There are many options within the modify dropdown menu, but none are as robust as SpaceClaim|- In command line one can fix overlaps by typing `validate vol all` and then `healer autoheal [problem vols]`. <br/></br> - This should work to detect overlaps, but is not as robust as SpaceClaim. |
+| __Inspect validity of models and resolve overlapping volumes__ | - To find volume overlaps click __ Power Tools->Diagnose Geometry tab->click Options button->Overlap checks-> check Overlapping Volumes->Done->Analyze button  |- In the command line one can validate volumes by typing `validate vol all`.  One may try to repair any problem volumes identified with `healer autoheal [problem volume_id]`.  One may also need to use `healer analyze vol all` to identify other potential problem volumes. <br/></br> - One should use the graphical tool to detect volume overlaps.  Overlaps can be resolved using the command `remove overlap volume` command in Trelis 17.1 (for details type `help remove overlap volume`) and higher or use standard boolean operations in Cubit/Trelis. |
 
 <details><p><summary>Notes</summary>
 - A more general Cubit/Trelis DAGMC basics tutorial can be found at https://svalinn.github.io/DAGMC/usersguide/trelis_basics.html.
@@ -127,13 +129,14 @@ _Imprinting and Merging surfaces accelerates the DAGMC process by combining surf
 
   1. Imprint and Merge all shared surfaces in the model.
      * If using the GUI, in command panel select __Geometry -> Volume -> Imprint Merge__ and select __Imprint and Merge__ from the dropdown menu. Then type "all" into the __Volume ID(s)__ box and click __Apply__.
-     * Otherwise in command line type `imprint volume all` and then enter. Then type `merge volume all`.
+     * Otherwise in command line type `imprint body all` and then enter. Then type `merge all`.
      * _Now all surfaces that previously overlapped have been merged into one surface shared by both volumes._
+     * One should re-check for overlapping volumes in case of any problems in the imprint/merge operations
 
 <details><p><summary>Notes</summary>
 - The default tolerated distance for imprinting/merging surfaces is 5.0e-4 units.
 <br/>
-- Combining surfaces cuts two surfaces and two sets of faceting areas down to one, decreasing computational power required as well as eliminating possible errors where particles exist simultaneously in two surfaces.
+- Combining surfaces reduces two surfaces and two sets of faceting areas down to one, decreasing the computational power required as well as eliminating possible errors where particles exist simultaneously in two surfaces.
 </p></details>
 
 #### Assigning Materials in Cubit/Trelis and defining the Implicit Complement
