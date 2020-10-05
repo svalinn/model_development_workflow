@@ -22,5 +22,5 @@ __These Tutorials use specific models to explain and demonstrate important steps
      - [Blocks in ACIS (.sat) format](ErrorBlocks.SAT)
      - [Blocks in SpaceClaim format](ErrorBlocks.scdoc)
 
-  * Example of Complex Model to Show Possible Complications:_**work in progress**_
+  * Example of Complex Model to Show Possible Complications: _**work in progress**_
      - [Full tutorial](ComplexAssembly.md)
