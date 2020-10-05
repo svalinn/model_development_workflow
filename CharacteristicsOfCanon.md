@@ -19,7 +19,7 @@ considerations necessary to create functional models._
       * Small gaps
       * Curve coincident to surface
 
-  * __Radial model__  _*(work in progress)**_
+  * __Radial model__  _**(work in progress)**_
     - Go through workflow with some applicability, could be a basis to build further complex models
     - Exemplifies curvilinear CAD issues
     - Introduces reflecting boundaries
