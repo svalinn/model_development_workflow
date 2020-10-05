@@ -6,7 +6,7 @@ considerations necessary to create functional models._
 
 ### Basic Models
 
-  * __Simple Model___**work in progress**_
+  * __Simple Model__ _**(work in progress)**_
     - Show workflow in a model without complications.
     - Introduce issues arising from Cubit/Trelis.
     - Show basic functionality of Cubit/Trelis such as imprinting/merging, assigning materials, and meshing.
@@ -19,12 +19,12 @@ considerations necessary to create functional models._
       * Small gaps
       * Curve coincident to surface
 
-  * __Radial model__(work in progress)
+  * __Radial model_ _*(work in progress)**_
     - Go through workflow with some applicability, could be a basis to build further complex models
     - Exemplifies curvilinear CAD issues
     - Introduces reflecting boundaries
 
-### Auxiliary, Difficult Models _**work in progress**_
+### Auxiliary, Difficult Models _**(work in progress)**_
 
 * MELCOR geometry (flows that split and recombine)
 * Toroidal geometry with thin walls that may lose particles
