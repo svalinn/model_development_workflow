@@ -1,0 +1,64 @@
+# create and prepare the shieldblock701 model for the uw2 dagmc workflow
+#
+#   -uses implicit complement to define the space around the shield blocks
+#
+brick x 100 y 100 z 10 # create shield1
+move volume 1 z 5
+brick x 100 y 100 z 10 # create shield2
+move volume 2 z 20
+brick x 20 y 20 z 20 # create beam tube
+move volume 3 z -10
+# create graveyard
+brick x 200 y 200 z 200
+brick x 210 y 210 z 210
+subtract vol 4 from vol 5 # creates vol 6 (this will be the graveyard)
+#
+validate vol all # no problems detected
+healer analyze volume all # no problems
+#
+# check vol overlaps-Nothing Found
+# small hydraulic surfaces (0), curves (0)
+#
+# check preimprint volume of volumes and save for later comparison
+#   can perform manually or use your own code or can use volofvolcubit.py
+#
+# imprint and merge model
+imprint body all #
+# validate vol all--No problems detected
+# healer analyze volume all # no problems
+# determine vol of all volumes post-imprint and compare to preimprint
+#   can perform manually or use your own code or comparevol2origvolcubit.py
+# check vol overlaps-Nothing Found
+# check for very small hydraulic surfaces (0), curves (0)
+#
+merge tol 1.e-4
+merge all #
+#
+# validate vol all
+# healer analyze volume all # no problems
+# determine vol of all volumes post-merge and compare to preimprint
+#   can perform manually or use your own code or comparevol2origvolcubit.py
+# check vol overlaps-Nothing Found
+# check for very small hydraulic length of curves,surfaces, and volumes with cubit
+#
+# now check for surf overlaps...note subject to tolerances-Nothing Found
+#
+# assign materials using new uw2 format with materials from the library 
+#
+group "mat:Graveyard" add vol 6
+#
+# vacuum/void volumes
+group "mat:Vacuum" add vol 3 # beam tube
+#
+# vols with materials 
+# note: If you want to change the density of a material from
+#       that stored in the material library, the uw2 workflow
+#       requires the mass density to be passed as a postive value
+group "mat:Iron" add vol 1 # iron slab with density from matl lib
+group "mat:Water" add vol 2 # water slab with density from matl lib
+#
+# reflective boundary conditions-none for this calculation
+#
+# facet and export h5m geometry file for uw2dag-mcnp
+export dagmc "shieldblock701_zip.h5m" faceting_tolerance 1.e-3 make_watertight #
+#
