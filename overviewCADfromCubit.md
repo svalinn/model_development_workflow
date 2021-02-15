@@ -1,6 +1,6 @@
 # Overview of Tutorials that start by creating a CAD file using Cubit/Trelis
 
-### Basic Models using UW2 workflow
+### Basic Models using UW2 workflow:
 
   * __Simple two slab model__ 
     - Illustrates the UW2 workflow
