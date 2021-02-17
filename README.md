@@ -5,9 +5,9 @@
 _These Tutorials use specific CAD models to explain and demonstrate important steps of the DAGMC workflow. By going through the tutorials one should understand the basic workflow of using DAGMC and the basic functionality of SpaceClaim and Trelis/Cubit in the DAGMC workflow._
 
 ## Overview of Tutorials:
-  * Overview of tutorials that start with an existing CAD file:
+  * Tutorials that start with an existing CAD file:
      - [Overview of each tutorial including geometry](CharacteristicsOfCanon.md)
-  * Overview of tutorials that start by creating a CAD file using Cubit/Trelis:
+  * Tutorials that start by creating a CAD file using Cubit/Trelis:
      - [Overview of each tutorial including geometry](overviewCADfromCubit.md)
 
 ## Tutorials that start with a CAD file created with CAD software
