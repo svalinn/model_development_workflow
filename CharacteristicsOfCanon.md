@@ -1,10 +1,6 @@
-# Characteristics of a Canonical Geometry
+# Overview of Tutorials that start with an existing CAD file:
 
-_Canonical geometries should contain all aspects of the workflow so that
-through the creation of the geometries one encounters all methods and
-considerations necessary to create functional models._
-
-### Basic Models
+## Basic Models
 
   * __Simple Model__ _**(work in progress)**_
     - Show workflow in a model without complications.
@@ -24,9 +20,8 @@ considerations necessary to create functional models._
     - Exemplifies curvilinear CAD issues
     - Introduces reflecting boundaries
 
-### Auxiliary, Difficult Models _**(work in progress)**_
+## Auxiliary, Difficult Models _**(work in progress)**_
 
 * MELCOR geometry (flows that split and recombine)
 * Toroidal geometry with thin walls that may lose particles
 * A radial slice where one encounters boundary conditions
-
