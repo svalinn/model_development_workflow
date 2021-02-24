@@ -1,0 +1,39 @@
+-*-mcnpgen-*- 14 MeV isotropic point src in a block tube on 2 separated shield blocks
+c -uses uw2 workflow
+c -uses implicit complement to define space around blocks
+c 
+c 
+c to run:
+
+c uwuw_preproc shieldblock701_zip.h5m -v -l twoslab_matlLib.h5m
+c (above injects the material cards into the geometry file from the material library)
+c dag-mcnp62 n=shieldblock701 gcad=shieldblock701_zip.h5m lcad=shieldblock701.glist
+c 
+c data sections
+c 
+c 
+mode n p  $ transport neutrons and photons
+c 
+c source term......bare point source monoenergetic, isotropic.........
+  sdef pos=0 0 -10         $ reference position
+       erg=14.1          $ source energy
+       par=1             $ particle type is neutrons
+c end of source term.......................................................
+c 
+c materials from h5m file injected by uwuw_preproc
+c 
+c tallies
+f14:n 1 2 $ shield blocks
+fq14 f e $ change tally printout-cell down,ebins across top
+c 
+c dagmc overlap_thickness=cm check_src_cell=off/on usecad=off/on distlimit=off/on 
+c       defaults=         0.0               on            off              off
+dagmc overlap_thickness=0.0 check_src_cell=on usecad=off distlimit=off    
+c 
+c 
+c print source,materials, and first 50 histories
+print 10 40 110
+c 
+nps  1e6
+c  dump frequency,write mctal file
+prdmp j 1e5 1
